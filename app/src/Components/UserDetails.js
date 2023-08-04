@@ -1,12 +1,18 @@
 import React from 'react'
 import './Style.css';
+import { useNavigate } from 'react-router-dom';
 
 function UserDetails() {
+    const navigate = useNavigate();
+    const navigatetowelcome = (event)=>{
+        event.preventDefault();
+        navigate('/Welcome');
+    }
     return (
         <>
             <div className="login-container">
                 <h2>Join a2i now - It's free!</h2>
-                <form className="login-form">
+                <form className="login-form" onSubmit={navigatetowelcome}>
                     <br />
                     <label for="first">First Name*</label>
                     <input class="login-input" type="text" id="first" required />

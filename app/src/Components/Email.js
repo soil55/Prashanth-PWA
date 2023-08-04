@@ -1,15 +1,21 @@
 import React from 'react'
 import "./Style.css";
+import { useNavigate } from 'react-router-dom';
 
 function Email() {
+  const navigate = useNavigate();
+  const navigatetouserDetails = (event)=>{
+    event.preventDefault();
+    navigate('/UserDetails');
+  }
   return (
     <div className="login-container">
     <h2>We have Sent a 5 digit Verification Code</h2>
-    <form className="login-form">
+    <form className="login-form" onSubmit={navigatetouserDetails}>
     <p>virat*******@gmail.com.<a href="#">Change Email</a></p> 
     <br/>   
     <label for="num">5-Digit Verification Code*</label>
-        <input class="login-input" type="Number" id="num" required />
+        <input class="login-input" type="text" id="num" required />
     <br/>
     <br/>
     <p><a href="#">Resend Code</a></p>

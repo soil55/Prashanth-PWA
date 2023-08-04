@@ -1,7 +1,12 @@
 import React from 'react'
 import "./Style.css"
+import { useNavigate } from 'react-router-dom'
 
 function Welcome() {
+    const navigate = useNavigate();
+    const navigatetoacademics = ()=>{
+        navigate('/Academic');
+    }
     return (
         <>
             <div className="login-container">
@@ -16,7 +21,7 @@ function Welcome() {
                         </select>
                 </div>
                 <br/>
-                <button class="login-button" type="submit">Agree and Join</button>
+                <button class="login-button" type="submit" onClick={navigatetoacademics}>Continue</button>
             </div>
         </>
     )

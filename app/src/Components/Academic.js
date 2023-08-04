@@ -1,12 +1,18 @@
 import React from 'react'
 import "./Style.css"
+import { useNavigate } from 'react-router-dom'
 
 function Academic() {
+    const navigate = useNavigate();
+    const land = (event)=>{
+        event.preventDefault();
+        navigate('/Landing');
+    }
     return (
         <>
             <div className="login-container">
                 <h2>Add Your Academic Details</h2>
-                <form className="login-form">
+                <form className="login-form" onSubmit={land}>
                     <br />
                     <label for="University">School/University*</label>
                     <input class="login-input" type="text" id="University" placeholder="School/University" required />
