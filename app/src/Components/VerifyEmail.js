@@ -16,7 +16,7 @@ function VerifyEmail() {
                 <br/>
                 <form className="login-form" onSubmit={navigatetoNewpass}>
                 <label for="num" style={{textAlign:"left"}}>5-Digit Verification Code*</label>
-                    <input class="login-input" type="Number" id="num" required />
+                    <input class="login-input" type="text" id="num" required />
                 <br/>
                 <br/>
                 <p>Resend Code</p>
