@@ -11,6 +11,11 @@ import UserDetails from './Components/UserDetails';
 import Welcome from './Components/Welcome';
 import Landing from './Components/Landing';
 import VerifyEmail from './Components/VerifyEmail';
+import Courses from './Components/Dashboard/Courses';
+import Profile from './Components/Dashboard/Profile';
+import OneCourse from './Components/Dashboard/OneCourse';
+import Resume from './Components/Dashboard/Resume';
+
 
 
 function App() {
@@ -28,6 +33,12 @@ function App() {
       <Route exact path="/Landing" element={<Landing/>}/>
       <Route exact path="/Forgotpass" element={<Forgotpass/>}/>
       <Route exact path="/VerifyEmail" element={<VerifyEmail/>}/>
+  
+
+    <Route exact path="/FreeCourses" element={<Courses/>}/>
+    <Route exact path="/Course" element={<OneCourse/>}/>
+    <Route exact path="/Profile" element={<Profile/>}/>
+    <Route exact path="/Resume" element={<Resume/>}/>
     </Routes>
     </>
   );
