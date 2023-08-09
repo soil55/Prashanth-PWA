@@ -18,35 +18,35 @@ function Profile() {
       <div className="login-form" style={{width:"314px"}}>
         <h3>Profile Info</h3>
     
-      <input class="login-input" type="text" id="University" placeholder="Name"/>
+      <input class="login" type="text" id="University" placeholder="Name"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Email"/>
+      <input class="login" type="text" id="University" placeholder="Email"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Phone Number"/>
-      <input class="login-input" type="text" id="University" placeholder="LinkdIn URL"/>
+      <input class="login" type="text" id="University" placeholder="Phone Number"/>
+      <input class="login" type="text" id="University" placeholder="LinkdIn URL"/>
     
       <h3>Academic Info</h3>
-      <input class="login-input" type="text" id="University" placeholder="College"/>
+      <input class="login" type="text" id="University" placeholder="College"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Degree/Specialization"/>
+      <input class="login" type="text" id="University" placeholder="Degree/Specialization"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Year of Passing"/>
-      <input class="login-input" type="text" id="University" placeholder="CGPA"/>
+      <input class="login" type="text" id="University" placeholder="Year of Passing"/>
+      <input class="login" type="text" id="University" placeholder="CGPA"/>
 
       <h3>Projects</h3>
-      <input class="login-input" type="text" id="University" placeholder="Name"/>
+      <input class="login" type="text" id="University" placeholder="Name"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Description"/>
+      <input class="login" type="text" id="University" placeholder="Description"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Github Link"/>
+      <input class="login" type="text" id="University" placeholder="Github Link"/>
       <button className="addbutton">Add Projects</button>
       <h3>Experience</h3>
-      <input class="login-input" type="text" id="University" placeholder="Position"/>
+      <input class="login" type="text" id="University" placeholder="Position"/>
     
-      <input class="login-input" type="text" id="University" placeholder="Work Description"/>
+      <input class="login" type="text" id="University" placeholder="Work Description"/>
       <button className="addbutton">Add Experience</button>
       <h3>Skills</h3>
-      <input class="login-input" type="text" id="University" placeholder="Skill name"/>
+      <input class="login" type="text" id="University" placeholder="Skill name"/>
       <button className="addbutton">Add Skills</button>
       <br/>
       <button className='Resume-button'>Create Resume</button>

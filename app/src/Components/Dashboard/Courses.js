@@ -16,9 +16,9 @@ function Courses() {
         <div className="container">
           <div className="search-container">
             <input type="text" className="search-bar" placeholder="Search for a course" />
-
+            <br />
             <select className="genre-select">
-              <br />
+              
               <option value="">All Genres</option>
               <option value="programming">Programming</option>
               <option value="design">Design</option>

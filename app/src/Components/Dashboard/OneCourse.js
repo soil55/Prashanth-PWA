@@ -12,10 +12,10 @@ function OneCourse() {
     <p className="course-description">Learn the basics of React and build interactive user interfaces.</p>
     <h3>Modules:</h3>
     <ul className="module-list">
-      <a><li className="module-item">Module 1: Introduction to React</li></a>
-      <a><li className="module-item">Module 2: Components and Props</li></a>
-      <a><li className="module-item">Module 3: State and Lifecycle</li></a>
-     <a><li className="module-item">Module 4: Handling Events</li></a> 
+      <li className="module-item"><a href="#">Module 1: Introduction to React</a></li>
+      <li className="module-item"><a href="#">Module 2: Components and Props</a></li>
+      <li className="module-item"><a href="#">Module 3: State and Lifecycle</a></li>
+     <li className="module-item"><a href="#">Module 4: Handling Events</a></li>
     </ul>
     <a href="/enroll" className="enroll-button">Enroll Now</a>
     <Nav/>
