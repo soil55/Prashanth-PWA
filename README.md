@@ -75,8 +75,8 @@ Following Screenshots illustrates the same
 ![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/0afff59b-20e4-4efc-8b92-d13424081b01)
 
 ![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/e8b9c1e7-db49-4352-ab36-5adecac2b45b)
-![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/06dff1b3-4f67-4b5a-9752-efa9d63e5376)
-![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/f7c85fef-62b4-48a4-a80f-f1e970b25ba8)
-![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/f656c721-6f73-43a5-aae8-d94fcf4cdca9)
 ![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/888ada09-fdf4-418e-82de-51f21d778ed9)
+![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/75fa533b-2d9e-420a-8046-052baf119b91)
+![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/8a210074-789b-4c4a-8ff1-d695f20891f2)
+
 
