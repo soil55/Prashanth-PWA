@@ -1,4 +1,6 @@
 import React from "react"
+import "./header.css"
+import "../../../App.css"
 
 const Head = () => {
   return (

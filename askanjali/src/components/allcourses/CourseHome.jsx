@@ -2,10 +2,13 @@ import React from "react"
 import Back from "../common/back/Back"
 import CoursesCard from "./CoursesCard"
 import OnlineCourses from "./OnlineCourses"
+import Header from "../common/header/Header"
+import "../../App.css"
 
 const CourseHome = () => {
   return (
     <>
+      <Header/>
       <Back title='Explore Courses' />
       <CoursesCard />
       <OnlineCourses />
