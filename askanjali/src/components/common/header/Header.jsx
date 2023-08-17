@@ -1,45 +1,57 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import { Switch, notification } from "antd"
+import { Switch} from "antd"
+import { useNotification } from "../../Notification/NotificationContext"
 import Head from "./Head"
 import "./header.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const [click, setClick] = useState(false)
-  const [toggle,setoggle] = useState(false)
 
-  const toggler = ()=>{
-    toggle?setoggle(false):setoggle(true);
+  const { notificationEnabled, toggleNotification } = useNotification();
+  const toggle = ()=>{
+    toggleNotification();
 
     Notification.requestPermission().then(perm=>{
       if(perm==="granted"){
-        if(!toggle){
-          const notification = new Notification("Welcome",{
-            body:"Nofitfications enabled",
-            data:"Hello There!",
-            // tag:"Welcome Message"
-          })
-          setInterval(()=>{
-            const interval = new Notification("Welcome",{
-              body:"Check out the Courses Available"
-            })
-          },3*60*60*1000)
-        }else{
-          const notification = new Notification("Disable",{
-            body:"Nofitfications Disable",
-            data:"Hello There!",
-            // tag:"Welcome Message"
-          })
-        }
-       
+          if(!notificationEnabled){
         
+              toast.success('Notification: Toggle is turned on!', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+                setTimeout(()=>{
+                  toast.success('Notification: 1st Notification', {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                  })
+                },3*60*60*1000)
+                setTimeout(()=>{
+                  toast.success('Notification: 2nd Notification', {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                  })
+                },6*60*60*1000)
+                setTimeout(()=>{
+                  toast.success('Notification: 3rd Notification', {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                },9*60*60*1000)
+          }else{
+            toast.success('Notification: Toggle is turned off!', {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            })
+                
+                clearTimeout();
+                clearTimeout();
+                clearTimeout();
+          }
       }
     })
   }
-
   return (
     <>
       <Head />
+      
       <header>
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
@@ -55,8 +67,10 @@ const Header = () => {
             <li>
               <Link to='/pricing'>Pricing</Link>
             </li>
-            <Switch onClick={toggler}/>
-          </ul>
+            <Switch 
+            checked={notificationEnabled}
+            onChange={toggle}/>
+            </ul>
 
           <div className='start'>
             <div className='button'><Link to='/contact'>Profile</Link></div>
@@ -66,6 +80,7 @@ const Header = () => {
           </button>
         </nav>
       </header>
+      <ToastContainer/>
     </>
   )
 }

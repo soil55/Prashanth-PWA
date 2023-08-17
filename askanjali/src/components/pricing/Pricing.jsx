@@ -5,11 +5,18 @@ import "./price.css"
 import Faq from "./Faq"
 import Header from "../common/header/Header"
 import "../../App.css"
+import { NotificationProvider } from "../Notification/NotificationContext"
+
+
 
 const Pricing = () => {
   return (
     <>
-      <Header/>
+      <NotificationProvider>
+        <Header/>
+      </NotificationProvider>
+      
+      
       <Back title='Choose The Right Plan' />
       <section className='price padding'>
         <div className='container grid'>
@@ -17,6 +24,7 @@ const Pricing = () => {
         </div>
       </section>
       <Faq />
+      
     </>
   )
 }
