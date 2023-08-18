@@ -15,7 +15,7 @@ import About from "./components/about/About"
 import CourseHome from "./components/allcourses/CourseHome"
 import Pricing from "./components/pricing/Pricing"
 import Contact from "./components/contact/Contact"
-
+import CoursePage from "./components/allcourses/CoursePage"
 
 
 function Main() {
@@ -37,6 +37,7 @@ function Main() {
       <Route exact path='/courses' element={<CourseHome/>} />
       <Route exact path='/pricing' element={<Pricing/>} />
       <Route exact path='/contact' element={<Contact/>} />
+      <Route exact path='/coursepage' element={<CoursePage/>}/>
   
 
     {/* <Route exact path="/FreeCourses" element={<Courses/>}/>

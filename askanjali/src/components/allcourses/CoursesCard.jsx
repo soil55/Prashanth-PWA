@@ -1,12 +1,40 @@
 import React from "react"
 import "./courses.css"
 import { coursesCard } from "../../dummydata"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Heading from "../common/heading/Heading"
+import { useNavigate } from "react-router-dom";
 
 const CoursesCard = () => {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+  const navigate = useNavigate();
+  const navtopage = ()=>{
+    navigate('/coursepage');
+  }
   return (
     <>
       <section className='coursesCard'>
+      <Heading  title='Browse Our Paid Courses' />
         <div className='container grid2'>
+        <Carousel responsive={responsive}>
           {coursesCard.map((val) => (
             <div className='items'>
               <div className='content flex'>
@@ -47,10 +75,12 @@ const CoursesCard = () => {
                   {val.priceAll} / {val.pricePer}
                 </h3>
               </div>
-              <button className='outline-btn'>ENROLL NOW !</button>
+              <button className='outline-btn' onClick={navtopage}>ENROLL NOW !</button>
             </div>
           ))}
+          </Carousel>
         </div>
+        
       </section>
     </>
   )

@@ -163,6 +163,134 @@ export const homeAbout = [
       pricePer: "$3 per month",
     },
   ]
+  export const freecoursesCard = [
+    {
+      id: 1,
+      cover: "../images/courses/c1.png",
+      coursesName: "Introducing to Software Engineering",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by John Smith",
+          totalTime: "50 lectures (190 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "Not Available",
+    },
+    {
+      id: 2,
+      cover: "../images/courses/c2.png",
+      coursesName: "Enhancing Adobe Photoshop CC 2020 Skills",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Ram Gurung",
+          totalTime: "30 lectures (125 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "$0 per month",
+    },
+    {
+      id: 3,
+      cover: "../images/courses/c3.png",
+      coursesName: "HTML, CSS, and Javascript for Web Developers",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Saroj Nepal",
+          totalTime: "50 lectures (50 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "Not Available",
+    },
+    {
+      id: 4,
+      cover: "../images/courses/c4.png",
+      coursesName: "Introducing to Programming with WordPress",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Prabin Thapa Mager",
+          totalTime: "20 lectures (20 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "$0 per month",
+    },
+    {
+      id: 5,
+      cover: "../images/courses/c5.png",
+      coursesName: "Introducing to Programming with ReactJS",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Sunil Bishowkaram",
+          totalTime: "100 lectures (150 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "Not Available right now",
+    },
+    {
+      id: 6,
+      cover: "../images/courses/c6.png",
+      coursesName: "Learn Frontend Programming Language",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Sunil Bishowkaram",
+          totalTime: "200 lectures (300 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "$0 per month",
+    },
+    {
+      id: 7,
+      cover: "../images/courses/c7.png",
+      coursesName: "Introducing to with HTML / CSS",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Price",
+          totalTime: "20 lectures (50 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "$0 per month",
+    },
+    {
+      id: 8,
+      cover: "../images/courses/c8.png",
+      coursesName: "Introducing to with JAVA",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Petter",
+          totalTime: "80 lectures (200 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "$0 per month",
+    },
+    {
+      id: 9,
+      cover: "../images/courses/c9.png",
+      coursesName: "Introducing to with HTML / CSS / JAVASCRIPT",
+      courTeacher: [
+        {
+          dcover: "../images/back.webp",
+          name: "by Petter",
+          totalTime: "50 lectures (50 hrs)",
+        },
+      ],
+      priceAll: "Free",
+      pricePer: "Not Available right now",
+    },
+  ]
   export const online = [
     {
       cover: "../images/courses/online/o1.png",
@@ -279,6 +407,24 @@ export const homeAbout = [
       work: "DEVELOPER AND LEAD INSTRUCTOR",
     },
   ]
+  export const Modules = [
+    {
+      name: "Module 1",
+      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+      name: "Module 2",
+      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+      name: "Module 3",
+      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+      name: "Module 4",
+      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+  ]
   export const price = [
     {
       name: "BASIC PLAN",
@@ -326,6 +472,25 @@ export const homeAbout = [
       title: "How It is hidden by default, until the collapse?",
       desc: "It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.",
     },
+  ]
+  export const faq_course = [
+    {
+      title: "Who is this Online Courses for?",
+      desc: "This is the first item's accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.",
+    },
+    {
+      title: "What are the prequisites for the course?",
+      desc: "It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.",
+    },
+    {
+      title: "How much Time would it take for the course Completion?",
+      desc: "It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.",
+    },
+    {
+      title: "Is the Course up to Date?",
+      desc: "This is the first item's accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.",
+    },
+   
   ]
   export const blog = [
     {

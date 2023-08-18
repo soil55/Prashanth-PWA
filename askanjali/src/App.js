@@ -11,6 +11,7 @@ import Contact from "./components/contact/Contact"
 import Home from "./components/home/Home"
 
 import { useNotification } from "./components/Notification/NotificationContext"
+import CoursePage from "./components/allcourses/CoursePage"
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
           <Route exact path='/pricing' element={<Pricing/>} />
           <Route exact path='/journal' element={<Blog/>} />
           <Route exact path='/contact' element={<Contact/>} />
-          
+          <Route exact path='/coursepage' element={<CoursePage/>}/>
       </Routes>
       
     </>

@@ -5,6 +5,7 @@ import OnlineCourses from "./OnlineCourses"
 import Header from "../common/header/Header"
 import "../../App.css"
 import { NotificationProvider } from "../Notification/NotificationContext"
+import FreeCoursecard from "./FreeCoursecard"
 
 
 const CourseHome = () => {
@@ -15,6 +16,7 @@ const CourseHome = () => {
       <Header/>
       </NotificationProvider>
       <Back title='Explore Courses' />
+      <FreeCoursecard/>
       <CoursesCard />
       <OnlineCourses />
       
