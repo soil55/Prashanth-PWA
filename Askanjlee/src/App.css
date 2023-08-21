@@ -1,0 +1,28 @@
+/* For mobile screens */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4px;
+  }
+  
+  /* For medium screens and above */
+  @media (min-width: 768px) {
+    .flex-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 16px; /* Adjust the gap as needed */
+    }
+    
+    .flex-item {
+      flex: 0 1 calc(50% - 8px); /* Two columns on medium screens */
+    }
+  }
+  
+  /* For large screens and above */
+  @media (min-width: 1024px) {
+    .flex-item {
+      flex: 0 1 calc(33.33% - 10px); /* Three columns on large screens */
+    }
+  }
