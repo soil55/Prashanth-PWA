@@ -43,16 +43,8 @@ Before you begin, ensure you have the following installed on your system:
    ```bash
    npm install
 
-### Screenshots
-![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/981223ad-914a-4b7c-8cdb-9f87d44bd7ee)
-
-![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/2a73e6b6-0abb-4221-a766-02b1b4f01619)
-
-
-
-
 ### Running
-
+1. Run
    ```bash
-    npm start
-
+   npm run
+### Screenshots   
