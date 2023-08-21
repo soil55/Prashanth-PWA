@@ -46,5 +46,5 @@ Before you begin, ensure you have the following installed on your system:
 ### Running
 1. Run
    ```bash
-   npm run
+   npm start
 ### Screenshots   
