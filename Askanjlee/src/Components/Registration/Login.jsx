@@ -1,13 +1,16 @@
 import React , {useState} from 'react'
+import axios from 'axios';
 import "../../index.css"
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 function Login() {
-    const [pass,setpass] = useState('');
-    const [error,seterror] = useState(null);
     
+    const [error,seterror] = useState(null);
+
+    const [username, setUsername] = useState('');
+    const [pass,setpass] = useState('');
+
     const handleinput = event =>{
         const value = event.target.value;
         setpass(value);
@@ -15,14 +18,27 @@ function Login() {
 
     const navigate = useNavigate()
 
-    const Navtolanding = ()=>{
-        if(pass.length<8){
-            seterror("password must be of atleast 8 characters");
-        }else{
+    const Navtolanding = async () => {
+        try {
+            const response = await axios.post(
+                'http://127.0.0.1:5000/signin',
+                { username, pass },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
             
-            navigate('/Home')
+            if (response.status === 200) {
+                navigate('/Home');
+            } else {
+                // Handle other response statuses (e.g., 401) here
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error states (e.g., network issues) here
         }
-       
     }
 
     return (
@@ -40,7 +56,7 @@ function Login() {
                                     <div>
                                         <label for="email" className="block text-sm font-medium text-gray-700">Email address / Username</label>
                                         <div className="mt-1">
-                                            <input id="email" type="text" data-testid="username" required="" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 disabled:cursor-wait disabled:opacity-50 sm:text-sm" aria-required />
+                                            <input id="email" type="text" data-testid="username" required="" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 disabled:cursor-wait disabled:opacity-50 sm:text-sm" value={username} onChange={(e)=>setUsername(e.target.value)}aria-required />
                                         </div>
                                     </div>
                                     <div>
