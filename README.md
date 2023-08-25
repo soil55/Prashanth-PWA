@@ -50,6 +50,7 @@ Before you begin, ensure you have the following installed on your system:
 ![Screenshot (2)](https://github.com/soil55/Prashanth-PWA/assets/94616578/ab84e490-acaa-4354-a598-472a58201357)
 ![Screenshot (3)](https://github.com/soil55/Prashanth-PWA/assets/94616578/e6fc4216-82cf-4dab-b056-7e88ad9fb64b)
 ![Screenshot (5)](https://github.com/soil55/Prashanth-PWA/assets/94616578/ed171368-16ab-4c71-b260-47b308d42b80)
+![Screenshot (7)](https://github.com/soil55/Prashanth-PWA/assets/94616578/4d4033d4-a422-4edd-bc83-acf976d1036f)
 
 
 
