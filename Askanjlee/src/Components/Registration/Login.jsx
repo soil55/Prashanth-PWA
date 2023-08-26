@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import axios from 'axios';
 import "../../index.css"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 
 function Login() {
@@ -32,6 +32,7 @@ function Login() {
             
             if (response.status === 200) {
                 navigate('/Home');
+                console.log("home");
             } else {
                 // Handle other response statuses (e.g., 401) here
             }

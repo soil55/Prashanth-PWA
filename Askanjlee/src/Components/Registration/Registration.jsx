@@ -1,6 +1,29 @@
-import React from 'react'
+import axios from 'axios';
+import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Registration() {
+  const [username, setUsername] = useState("");
+  const [pass, setPassword] = useState("");
+  const navigate = useNavigate()
+  const registeruser = async()=>{
+    try {
+      const response = await axios.post(
+          'http://127.0.0.1:5000/register',
+          { username, pass },
+          {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          }
+      );
+      navigate('/Home');
+      console.log("home");
+  } catch (error) {
+      console.error('Error:', error);
+      // Handle error states (e.g., network issues) here
+  }
+  }
   return (
     <>
       <main class="w-full flex-grow">
@@ -29,13 +52,13 @@ function Registration() {
                   </div>
                 </div>
                 <div class="mt-6">
-                  <form class="space-y-2"><div><label for="Name" class="mb-1 block text-sm font-medium text-gray-700">Name</label><input name="Name" placeholder="Enter your name" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm ring-indigo-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm" data-testid="name" />
+                  <form class="space-y-2" onSubmit={registeruser}><div><label for="Name" class="mb-1 block text-sm font-medium text-gray-700">Name</label><input name="Name" placeholder="Enter your name" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm ring-indigo-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm" data-testid="name" />
                   </div>
                     <div><label for="Username" class="mb-1 block text-sm font-medium text-gray-700">Username</label><input name="Username" data-testid="username" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm ring-indigo-500" required="" minlength="3" maxlength="15" pattern="^[a-z0-9]+$" placeholder="Only alphanumeric allowed [a-z, 0-9]" type="text" /><small class="ml-1 text-xs italic opacity-80">Once set, username cannot be changed</small></div>
-                    <div><label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email Address</label><input data-testid="email" placeholder="Enter your email address" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm ring-indigo-500" type="email" id="email" name="email" /></div>
+                    <div><label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email Address</label><input data-testid="email" value={username} onChange={(e)=>setUsername(e.target.value)}placeholder="Enter your email address" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm ring-indigo-500" type="email" id="email" name="email" /></div>
                     <div>
                       <div>
-                        <label for="Password" class="mb-1 block text-sm font-medium text-gray-700">Password</label><input data-testid="password" name="Password" placeholder="Enter a new password" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm ring-indigo-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm" minlength="5" maxlength="50" type="password" /></div>
+                        <label for="Password" class="mb-1 block text-sm font-medium text-gray-700">Password</label><input data-testid="password" value={pass} onChange={(e)=>setPassword(e.target.value)}name="Password" placeholder="Enter a new password" autocomplete="off" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm ring-indigo-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm" minlength="5" maxlength="50" type="password" /></div>
                     </div>
                     <div>
                       <button type="submit" data-testid="submit-btn" disabled="" class="text-md group flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">Submit Details</button>
