@@ -4,6 +4,7 @@ import Landing from "./Landing";
 
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
+
 function Home() {
   return (
     <>

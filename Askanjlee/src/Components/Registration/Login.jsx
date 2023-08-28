@@ -3,6 +3,8 @@ import axios from 'axios';
 import "../../index.css"
 import { useNavigate} from 'react-router-dom';
 
+import clientrequests from '../clientrequests';
+
 
 function Login() {
     
@@ -20,8 +22,8 @@ function Login() {
 
     const Navtolanding = async () => {
         try {
-            const response = await axios.post(
-                'http://127.0.0.1:5000/signin',
+            const response = await clientrequests.post(
+                'http://127.0.0.1:5000/login',
                 { username, pass },
                 {
                     headers: {
@@ -29,13 +31,7 @@ function Login() {
                     }
                 }
             );
-            
-            if (response.status === 200) {
-                navigate('/Home');
-                console.log("home");
-            } else {
-                // Handle other response statuses (e.g., 401) here
-            }
+            window.location.href='/Home'
         } catch (error) {
             console.error('Error:', error);
             // Handle error states (e.g., network issues) here

@@ -17,8 +17,6 @@ function Registration() {
               }
           }
       );
-      navigate('/Home');
-      console.log("home");
   } catch (error) {
       console.error('Error:', error);
       // Handle error states (e.g., network issues) here
