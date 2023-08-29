@@ -17,17 +17,20 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-@app.route("/@me")
+@app.route("/@me",methods=['GET'])
 def get_current_user():
-    user_id = session.get("user_id")
-
+    user_id = session["user_id"]
+    # user_id = "9ee1197adf2d435eada32543ba2dde99"
+    print(f"user id is {user_id}")
+    
     if not user_id:
         return jsonify({"error": "Unauthorized"}), 401
     
     user = User.query.filter_by(id=user_id).first()
     return jsonify({
         "id": user.id,
-        "email": user.email
+        "username": user.username,
+        "password":user.password
     }) 
 
 @app.route("/register", methods=["POST"])
@@ -39,9 +42,8 @@ def register_user():
 
     if user_exists:
         return jsonify({"error": "User already exists"}), 409
-
     # hashed_password = bcrypt.generate_password_hash(password)
-    new_user = User(id=random.randint(1,1000),username=username, password=password)
+    new_user = User(username=username, password=password)
     db.session.add(new_user)
     db.session.commit()
     
@@ -49,7 +51,8 @@ def register_user():
 
     return jsonify({
         "id": new_user.id,
-        "username": new_user.username
+        "username": new_user.username,
+        "password": new_user.password
     })
 
 @app.route("/login", methods=["POST"])
@@ -69,7 +72,7 @@ def login_user():
 
     return jsonify({
         "id": user.id,
-        "username": user.username
+        "username": user.username,
     })
 
 @app.route("/logout", methods=["POST"])
