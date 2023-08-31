@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Landing from './Landing'
-
+import clientrequests from '../clientrequests';
 
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
 import { UserCircleIcon, PaperClipIcon } from '@heroicons/react/solid'
 
 function Settings() {
+  const [user,setuser] = useState({});
+
+  useEffect(()=>{
+    (async()=>{
+      try{
+        const resp = await clientrequests.get("http://127.0.0.1:5000/@me");
+        setuser(resp.data);
+        console.log(resp.data)
+      }
+      catch(e){
+        console.log(e);
+      }
+    })();
+  },[])
   return (
     <div className="flex">
       <Landing />
@@ -96,11 +110,11 @@ function Settings() {
                 <dl className="divide-y divide-gray-100">
                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{user.username}</dd>
                   </div>
                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
+                    <dt className="text-sm font-medium leading-6 text-gray-900">Password</dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{user.password}</dd>
                   </div>
                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt className="text-sm font-medium leading-6 text-gray-900">About</dt>

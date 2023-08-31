@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session,json
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS, cross_origin
 from flask_session import Session
 from config import ApplicationConfig
-from models import db, User
+from models import db, User,Courses
+from sqlalchemy.orm import sessionmaker
 import random
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app.config.from_object(ApplicationConfig)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
+
 db.init_app(app)
 
 with app.app_context():
@@ -80,5 +82,25 @@ def logout_user():
     session.pop("user_id")
     return "200"
 
+@app.route("/course_list",methods=['GET'])
+def get_courses():
+    all_courses = Courses.query.all()
+    course_object = []
+    for course in all_courses:
+        print("Title:",course.course_title)
+        print("Price:",course.course_price)
+        print("Category:",course.course_group)
+        print("Description:",course.description)
+        print("---------------------------------")
+        course_object.append(jsonify({
+            course.course_title,course.course_price,course.course_group,course.description
+        }))
+    
+    courses_json_string = json.dumps(course_object, indent=4)
+    return courses_json_string
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
