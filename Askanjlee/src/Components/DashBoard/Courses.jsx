@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import Landing from './Landing'
+import clientrequests from '../clientrequests';
 import CourseCard from './Cards/CourseCard';
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
@@ -28,6 +29,25 @@ function Courses() {
           items: 1
         }
       };
+      const [cours,setcourses] = useState({});
+      useEffect(()=>{
+        (async()=>{
+          try{
+            const resp = await clientrequests.get("http://127.0.0.1:5000/course_list");
+            setcourses(resp.data);
+            console.log(resp.data)
+          }
+          catch(e){
+            console.log(e);
+          }
+        })();
+      },[]);
+      var c = Object.entries(cours);
+      const mathematicsCourses = c.filter((course) => course[1].Category === "Mathematics");
+      const ScieneCourses = c.filter((course)=>course[1].Category==="Science");
+      const StemCourses = c.filter((course)=>course[1].Category==="STEM");
+      const OlympiadCourses = c.filter((course)=>course[1].Category==="Olympiads");
+      console.log(c);
     return (
         <div className="flex">
             <Landing />
@@ -114,13 +134,14 @@ function Courses() {
                             
                             <div className="space-x-px p-4">
                             <Carousel responsive={responsive}>
-                            {courses.map((course, index) => (
+                            {c.map((course, index) => (
+                                
                                     <CourseCard
                                         key={index}
-                                        title={course.title}
-                                        instructor={course.instructor}
+                                        title={course[1].title}
+                                        instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
-                                        price={course.price}
+                                        price={course[1].price}
                                     />
                                 ))}
                                 </Carousel>
@@ -130,13 +151,13 @@ function Courses() {
                             <h2 class="my-2 mx-2 text-2xl font-bold">Mathematics</h2>
                             <div className="space-x-px p-4">
                                 <Carousel responsive={responsive}>
-                                {maths.map((course, index) => (
+                                {mathematicsCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
-                                        title={course.title}
-                                        instructor={course.instructor}
+                                        title={course[1].title}
+                                        instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
-                                        price={course.price}
+                                        price={course[1].price}
                                     />
                                 ))}
                                 </Carousel>
@@ -146,13 +167,13 @@ function Courses() {
                             <h2 class="my-2 mx-2 text-2xl font-bold">Science</h2>
                             <div className="space-x-px p-4">
                                 <Carousel responsive={responsive}>
-                                {scienceCourses.map((course, index) => (
+                                {ScieneCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
-                                        title={course.title}
-                                        instructor={course.instructor}
+                                        title={course[1].title}
+                                        instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
-                                        price={course.price}
+                                        price={course[1].price}
                                     />
                                 ))}
                                 </Carousel>
@@ -160,13 +181,13 @@ function Courses() {
                             <h2 class="my-2 mx-2 text-2xl font-bold">STEM</h2>
                             <div className="space-x-px p-4">
                                 <Carousel responsive={responsive}>
-                                {stemCourses.map((course, index) => (
+                                {StemCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
-                                        title={course.title}
-                                        instructor={course.instructor}
+                                        title={course[1].title}
+                                        instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
-                                        price={course.price}
+                                        price={course[1].price}
                                     />
                                 ))}
                                 </Carousel>
@@ -174,13 +195,13 @@ function Courses() {
                             <h2 class="my-2 mx-2 text-2xl font-bold">Olympiads</h2>
                             <div className="space-x-1 p-4">
                                 <Carousel responsive={responsive}>
-                                {olympiadCourses.map((course, index) => (
+                                {OlympiadCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
-                                        title={course.title}
-                                        instructor={course.instructor}
+                                        title={course[1].title}
+                                        instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
-                                        price={course.price}
+                                        price={course[1].price}
                                     />
                                 ))}
                                 </Carousel>

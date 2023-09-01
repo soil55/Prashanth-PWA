@@ -87,17 +87,16 @@ def get_courses():
     all_courses = Courses.query.all()
     course_object = []
     for course in all_courses:
-        print("Title:",course.course_title)
-        print("Price:",course.course_price)
-        print("Category:",course.course_group)
-        print("Description:",course.description)
-        print("---------------------------------")
-        course_object.append(jsonify({
-            course.course_title,course.course_price,course.course_group,course.description
-        }))
-    
-    courses_json_string = json.dumps(course_object, indent=4)
-    return courses_json_string
+        course_object.append({
+            'id':course.course_id,
+           'title':course.course_title,
+           'price':course.course_price,
+           'Category':course.course_group,
+           'Instructor':course.instructor,
+           'Description':course.description
+        })
+    print(course_object)
+    return jsonify(course_object)
 
 
 
