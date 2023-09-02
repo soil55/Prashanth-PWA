@@ -97,27 +97,4 @@ export const stemCourses = [
     }
     // Add more courses
   ];
-export const olympiadCourses = [
-    {
-      title: 'Math Olympiad Prep',
-      instructor: 'Mathias Harris',
-      price: 49.99,
-    },
-    {
-      title: 'Science Olympiad Training',
-      instructor: 'Dr. Sophia Turner',
-      price: 54.99,
-    },
-    {
-      title: 'STEM Olympiad Prep',
-      instructor: 'Lisa Martin',
-      price: 44.99,
-    },
-    {
-      title: 'STEM Olympiad Prep',
-      instructor: 'Lisa Martin',
-      price: 44.99,
-    }
-    // Add more courses
-  ];
-    
+

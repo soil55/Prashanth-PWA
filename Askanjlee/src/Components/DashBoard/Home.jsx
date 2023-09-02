@@ -1,11 +1,121 @@
 import React from "react";
 import Landing from "./Landing";
 
-
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
 
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import TeacherCards from "./Cards/TeacherCards"
+import VideoCard from "./Cards/VideoCard";
+
 function Home() {
+  //Data which could be fetched from any backend api..this is a dummy data for teachers
+  const Teachers = [
+    {
+      name: "John Doe",
+      description: "Experienced educator with a passion for mathematics.",
+      field: "Mathematics",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Jane Smith",
+      description: "Dedicated English teacher with a love for literature.",
+      field: "English",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "David Johnson",
+      description: "Science enthusiast who enjoys teaching physics and chemistry.",
+      field: "Science",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Maria Garcia",
+      description: "History teacher with a deep understanding of world events.",
+      field: "History",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Robert Brown",
+      description: "Passionate music instructor and talented pianist.",
+      field: "Music",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Linda Davis",
+      description: "Art teacher who inspires creativity in every student.",
+      field: "Art",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Michael Wilson",
+      description: "Physical education coach who promotes fitness and teamwork.",
+      field: "Physical Education",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Sarah Anderson",
+      description: "Computer science teacher with expertise in programming.",
+      field: "Computer Science",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Daniel Lee",
+      description: "Foreign language teacher skilled in teaching Spanish.",
+      field: "Foreign Language",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+    {
+      name: "Emily Taylor",
+      description: "Biology teacher who brings the wonders of life to the classroom.",
+      field: "Biology",
+      image: "https://w7.pngwing.com/pngs/644/43/png-transparent-teacher-tutor-education-teacher-hand-cartoon-fictional-character-thumbnail.png",
+    },
+      // Add more courses
+    ];
+    const videos = [
+      {
+        thumbnailUrl:"https://i.ytimg.com/vi/guBVW5PiHLs/maxresdefault.jpg",
+        Url:"https://www.youtube.com/watch?v=guBVW5PiHLs&pp=ygUWZnJhY3Rpb25zIGFuZCBkZWNpbWFscw%3D%3D",
+        title:"Fractions and Decimals",
+      },
+      {
+
+        thumbnailUrl:"https://i.ytimg.com/vi/DTnCqBUnaRM/maxresdefault.jpg",
+        Url:"https://www.youtube.com/watch?v=tZE_fQFK8EY&pp=ygUXaW50cm9kdWN0aW9uIHRvIGJpb2xvZ3k%3D",
+        title:"Introduction to Biology"
+      },
+      {
+        thumbnailUrl:"https://i.ytimg.com/vi/HfACrKJ_Y2w/sddefault.jpg",
+        Url:"https://www.youtube.com/watch?v=HfACrKJ_Y2w&pp=ygUJQ2FsY3VsdXMg",
+        title:"Calculus"
+      },
+      {
+        thumbnailUrl:"https://i.ytimg.com/vi/ifo76VyrBYo/maxresdefault.jpg",
+        Url:"https://www.youtube.com/watch?v=ifo76VyrBYo&pp=ygUbSW50cm9kdWN0aW9uIHRvIHByb2dyYW1taW5n",
+        title:"Introduction to programming"
+      }
+    ]
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   return (
     <>
       <div className="flex">
@@ -121,16 +231,43 @@ function Home() {
                   <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                 </svg></a>
               </div>
+              <h2 class="my-2 mx-5 text-2xl font-bold">Teachers</h2>
+            <div class="justify-between">
+              <div className="space-x-px p-4">
+                <Carousel responsive={responsive}>
+                  {Teachers.map((teacher, index) => (
+
+                    <TeacherCards
+                      key={index}
+                      name={teacher.name}
+                      field={teacher.field}
+                      image={teacher.image}
+                      description={teacher.description}
+                    />
+                  ))}
+                </Carousel>
+
+              </div>
+              <h2 class="my-2 mx-5 text-2xl font-bold">Recommended Videos</h2>
+              <div className="space-x-px p-4">
+                <Carousel responsive={responsive}>
+                  {videos.map((video, index) => (
+                      <VideoCard videoData = {video}/>
+                  ))}
+                </Carousel>
+
+              </div>
+            </div>
             </main>
 
           </div>
 
         </div>
 
-        
+
       </div>
     </>
   );
 }
 
-export default Home;
+export default Home
