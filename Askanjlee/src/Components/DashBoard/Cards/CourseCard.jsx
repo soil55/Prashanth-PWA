@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../../App.css"
-import { useNavigate } from 'react-router-dom';
-const CourseCard = ({ title, instructor, image, price }) => {
+import { useNavigate,Link } from 'react-router-dom';
+const CourseCard = ({ id,title, instructor, image, price }) => {
   const navigate = useNavigate()
 
   const navto = ()=>{
@@ -15,9 +15,10 @@ const CourseCard = ({ title, instructor, image, price }) => {
         <p className="text-gray-600 mb-2">Instructor: {instructor}</p>
         <div className="flex items-center justify-between">
           <p className="text-green-600 font-semibold">${price}</p>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition duration-300" onClick={navto}>
+          <Link to={`/coursedetail/${id}`}><button className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition duration-300" onClick={navto}>
             Enroll
           </button>
+          </Link>
         </div>
       </div>
     </div>

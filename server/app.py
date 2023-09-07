@@ -99,6 +99,17 @@ def get_courses():
     return jsonify(course_object)
 
 
+#for getting details of one particular course    
+@app.route("/course_details/<cid>",methods=['GET'])
+def get_one_course(cid):
+    result = Courses.query.filter_by(course_id=cid).first()
+    return jsonify({
+        "title":result.course_title,
+        "description":result.description,
+        "price":result.course_price,
+
+    })
+
 
 if __name__ == "__main__":
     app.run(debug=True)

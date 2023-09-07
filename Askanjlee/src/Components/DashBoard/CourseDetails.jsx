@@ -1,10 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Landing from './Landing'
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
-import { RadioGroup } from '@headlessui/react'
+import clientrequests from '../clientrequests';
 
 const product = {
     name: 'Course Title',
@@ -50,6 +52,21 @@ function classNames(...classes) {
 function CourseDetails() {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+    const {id} = useParams();
+    const [cours,setcourses] = useState({});
+    useEffect(()=>{
+        (async()=>{
+          try{
+            const resp = await clientrequests.get(`http://127.0.0.1:5000/course_details/${id}`);
+            setcourses(resp.data);
+            console.log(resp.data)
+          }
+          catch(e){
+            console.log(e);
+          }
+        })();
+      },[]);
+
     return (
         <>
             <div className="flex">
@@ -150,13 +167,13 @@ function CourseDetails() {
                                     {/* Product info */}
                                     <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
                                         <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                                            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+                                            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{cours.title}</h1>
                                         </div>
 
                                         {/* Options */}
                                         <div className="mt-4 lg:row-span-3 lg:mt-0">
                                             <h2 className="sr-only">Product information</h2>
-                                            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+                                            <p className="text-3xl tracking-tight text-gray-900">${cours.price}</p>
 
                                             {/* Reviews */}
                                             <div className="mt-6">
@@ -199,7 +216,7 @@ function CourseDetails() {
                                                 <h3 className="sr-only">Description</h3>
 
                                                 <div className="space-y-6">
-                                                    <p className="text-base text-gray-900">{product.description}</p>
+                                                    <p className="text-base text-gray-900">{cours.description}</p>
                                                 </div>
                                             </div>
 

@@ -138,6 +138,7 @@ function Courses() {
                                 
                                     <CourseCard
                                         key={index}
+                                        id={course[1].id}
                                         title={course[1].title}
                                         instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
@@ -154,6 +155,7 @@ function Courses() {
                                 {mathematicsCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
+                                        id={course[1].id}
                                         title={course[1].title}
                                         instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
@@ -170,6 +172,7 @@ function Courses() {
                                 {ScieneCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
+                                        id={course[1].id}
                                         title={course[1].title}
                                         instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
@@ -184,6 +187,7 @@ function Courses() {
                                 {StemCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
+                                        id={course[1].id}
                                         title={course[1].title}
                                         instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
@@ -198,6 +202,7 @@ function Courses() {
                                 {OlympiadCourses.map((course, index) => (
                                     <CourseCard
                                         key={index}
+                                        id={course[1].id}
                                         title={course[1].title}
                                         instructor={course[1].Instructor}
                                         image={"https://cdn.create.vista.com/downloads/9871a40c-e770-46dd-8d85-9cd49b8df6ec_1024.jpeg"}
