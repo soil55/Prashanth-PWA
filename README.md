@@ -60,14 +60,14 @@ Before you begin, ensure you have the following installed on your system:
 The backend system is organized into the following directory structure:
 
 - `/server`: Contains the main application code.
-  - `main.py`: Contains the main application logic and routes for handling different endpoints.
+  - `app.py`: Contains the main application logic and routes for handling different endpoints.
   - `config.py`: Contains configuration settings for the application.
   - `models.py`: Contains data models and database interaction logic.
   - `requirements.txt`: Lists all the Python libraries and packages required to run the application.
 
 - `README.md`: Contains documentation and instructions for setting up and running the application.
 
-## Main File (`main.py`)
+## Main File (`app.py`)
 
 ### Endpoints
 
@@ -76,6 +76,7 @@ The backend system is organized into the following directory structure:
 3. `/courses` (GET): Fetches a list of courses.
 4. `/courses/<course_id>` (GET): Fetches details of a specific course based on `course_id`.
 5. `/registration`(POST): Enters the details of a user into the database
+6. `/logout`(GET): Ends the session of the user.
 
 ## Configuration File (`config.py`)
 
