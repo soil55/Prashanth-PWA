@@ -11,6 +11,8 @@ class User(db.Model):
     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
     username = db.Column(db.String(345), unique=True)
     password = db.Column(db.Text, nullable=False)
+    email = db.Column(db.String(30))
+    number = db.Column(db.String(30))
 
 class Courses(db.Model):
     __tablename__ = "courses"
@@ -20,3 +22,6 @@ class Courses(db.Model):
     description = db.Column(db.Text)
     instructor = db.Column(db.String(32))
     course_group = db.Column(db.String(30))
+
+
+
