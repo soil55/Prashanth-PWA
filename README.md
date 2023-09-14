@@ -52,6 +52,62 @@ Before you begin, ensure you have the following installed on your system:
 ![Screenshot (5)](https://github.com/soil55/Prashanth-PWA/assets/94616578/ed171368-16ab-4c71-b260-47b308d42b80)
 ![Screenshot (7)](https://github.com/soil55/Prashanth-PWA/assets/94616578/4d4033d4-a422-4edd-bc83-acf976d1036f)
 
+#Backend System
+
+## Folder Structure
+![image](https://github.com/soil55/Prashanth-PWA/assets/94616578/8488987b-8f56-45b1-9000-393005681569)
+
+The backend system is organized into the following directory structure:
+
+- `/server`: Contains the main application code.
+  - `main.py`: Contains the main application logic and routes for handling different endpoints.
+  - `config.py`: Contains configuration settings for the application.
+  - `models.py`: Contains data models and database interaction logic.
+  - `requirements.txt`: Lists all the Python libraries and packages required to run the application.
+
+- `README.md`: Contains documentation and instructions for setting up and running the application.
+
+## Main File (`main.py`)
+
+### Endpoints
+
+1. `/Login` (POST): Login the user with session enabled for that particular user.
+2. `/@me` (GET): Fetches details of a specific user based on session id.
+3. `/courses` (GET): Fetches a list of courses.
+4. `/courses/<course_id>` (GET): Fetches details of a specific course based on `course_id`.
+5. `/registration`(POST): Enters the details of a user into the database
+
+## Configuration File (`config.py`)
+
+### Flask Configuration
+
+- `SECRET_KEY`: Secret key for session management.
+- `SQLALCHEMY_DATABASE_URI`: URI for connecting to the PostgreSQL database.
+
+### Database Configuration
+
+- `DB_HOST`: PostgreSQL host address.
+- `DB_PORT`: PostgreSQL port.
+- `DB_NAME`: Name of the database.
+- `DB_USER`: Database username.
+- `DB_PASSWORD`: Database password.
+
+### Redis Configuration
+
+- `REDIS_HOST`: Redis host address.
+- `REDIS_PORT`: Redis port.
+
+## Data Model File (`models.py`)
+
+- Defines classes representing the data entities (e.g., User, Course).
+- Includes methods for querying, creating, updating, and deleting records in the database.
+
+## Requirements File (`requirements/requirements.txt`)
+
+- Lists all the Python libraries and packages required to run the application. Includes Flask, SQLAlchemy, psycopg2 (for PostgreSQL), redis, and any other dependencies.
+
+
+
 
 
 
