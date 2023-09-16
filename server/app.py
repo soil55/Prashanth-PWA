@@ -5,6 +5,7 @@ from flask_session import Session
 from config import ApplicationConfig
 from models import db, User,Courses
 from sqlalchemy.orm import sessionmaker
+from twilio.rest import Client
 import random
 
 app = Flask(__name__)
@@ -112,6 +113,33 @@ def get_one_course(cid):
 
     })
 
+#for getting otp code for registration
+@app.route("/getOtp",methods=['POST'])
+def getOtp():
+
+    number = request.json["number"]
+    otp = getOtpapi(number)
+    return jsonify({
+        "number":number,
+        "otp": otp
+    })
+
+def generateOTP():
+    return random.randrange(100000,999999)
+
+def getOtpapi(number):
+    account_sid = 'ACce35a6feb4e1a1e6ec61ad3fbb9074cb'
+    auth_token = 'c33c283d823a802e34071f18dd4f6d87'
+    client = Client(account_sid,auth_token)
+    otp = generateOTP()
+    body = 'Your OTP is ' + str(otp)
+    message = client.messages.create(
+        body = body,
+        from_ = "+18645280853",
+        to = number,
+
+    )
+    return otp
 
 if __name__ == "__main__":
     app.run(debug=True)

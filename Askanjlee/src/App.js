@@ -11,6 +11,7 @@ import Certification from './Components/DashBoard/Certification';
 import CourseDetails from './Components/DashBoard/CourseDetails';
 import Leaderboard from './Components/DashBoard/Leaderboard';
 import Analytics from './Components/DashBoard/Analytics';
+import RegisterwithNumber from './Components/Registration/RegisterwithNumber';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/coursedetail/:id" element={<CourseDetails/>}/>
         <Route exact path="/Leaderboard" element={<Leaderboard/>}/>
         <Route exact path="/analytics" element={<Analytics/>}/>
+        <Route exact path="/registerNum" element={<RegisterwithNumber/>}/>
       </Routes>
     </>
   );
