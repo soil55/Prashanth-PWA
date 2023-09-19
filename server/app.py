@@ -42,7 +42,7 @@ def register_user():
     password = request.json["pass"]
     email = request.json["email"]
     number = request.json["number"]
-
+    
     user_exists = User.query.filter_by(username=username).first() is not None
 
     if user_exists:

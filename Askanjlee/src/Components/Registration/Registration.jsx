@@ -7,7 +7,6 @@ function Registration() {
   const [pass, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-  const navigate = useNavigate()
   const registeruser = async()=>{
     try {
       const response = await axios.post(
@@ -19,7 +18,9 @@ function Registration() {
               }
           }
       );
-  } catch (error) {
+      window.location.href='/registerNum'
+  } 
+  catch (error) {
       console.error('Error:', error);
       // Handle error states (e.g., network issues) here
   }
