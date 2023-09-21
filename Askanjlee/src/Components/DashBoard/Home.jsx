@@ -11,6 +11,7 @@ import TeacherCards from "./Cards/TeacherCards"
 import VideoCard from "./Cards/VideoCard";
 
 function Home() {
+  
   //Data which could be fetched from any backend api..this is a dummy data for teachers
   const Teachers = [
     {

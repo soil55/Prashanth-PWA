@@ -33,7 +33,8 @@ def get_current_user():
     return jsonify({
         "id": user.id,
         "username": user.username,
-        "password":user.password
+        "password":user.password,
+        "number":user.number
     }) 
 
 @app.route("/register", methods=["POST"])
@@ -58,6 +59,7 @@ def register_user():
         "id": new_user.id,
         "username": new_user.username,
         "password": new_user.password,
+        "number":new_user.number
     })
 
 @app.route("/login", methods=["POST"])
@@ -140,6 +142,33 @@ def getOtpapi(number):
 
     )
     return otp
+
+@app.route("/sendmessage",methods=['POST'])
+def sendNotification():
+    user_id = session["user_id"]
+    # user_id = "9ee1197adf2d435eada32543ba2dde99"
+    print(f"user id is {user_id}")
+    
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    user = User.query.filter_by(id=user_id).first()
+    print("The user number is " + user.number)
+    number = '+918800480315'
+    account_sid = 'ACce35a6feb4e1a1e6ec61ad3fbb9074cb'
+    auth_token = 'c33c283d823a802e34071f18dd4f6d87'
+    client = Client(account_sid,auth_token)
+    body = 'Check Out the Courses and improve your skills'
+    message = client.messages.create(
+        body = body,
+        from_ = "+18645280853",
+        to = number,
+
+    )
+    return jsonify({
+        "message":body
+    })
+
 
 if __name__ == "__main__":
     app.run(debug=True)
