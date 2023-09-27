@@ -32,7 +32,7 @@ function Home() {
   const intervals = 5000;
   setInterval(sendmessage,intervals);
   
-  //for sending messages at particular interval of time
+  
   //Data which could be fetched from any backend api..this is a dummy data for teachers
   const Teachers = [
     {

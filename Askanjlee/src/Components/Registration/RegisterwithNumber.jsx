@@ -31,6 +31,8 @@ function RegisterwithNumber() {
       window.location.href='/' //indicating that authentication was successful
     }
   }
+
+  
   
   return (
     <>
