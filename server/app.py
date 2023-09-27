@@ -12,8 +12,11 @@ app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 
 bcrypt = Bcrypt(app)
-CORS(app, supports_credentials=True)
+app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['CORS_ORIGIN_ALLOW_ALL'] = True
+
 server_session = Session(app)
+CORS(app, supports_credentials=True)
 
 db.init_app(app)
 
@@ -144,9 +147,9 @@ def getOtpapi(number):
     return otp
 
 @app.route("/sendmessage",methods=['POST'])
+@cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def sendNotification():
     user_id = session["user_id"]
-    # user_id = "9ee1197adf2d435eada32543ba2dde99"
     print(f"user id is {user_id}")
     
     if not user_id:
@@ -154,7 +157,7 @@ def sendNotification():
     
     user = User.query.filter_by(id=user_id).first()
     print("The user number is " + user.number)
-    number = '+918800480315'
+    number = '+91'+ user.number
     account_sid = 'ACce35a6feb4e1a1e6ec61ad3fbb9074cb'
     auth_token = 'c33c283d823a802e34071f18dd4f6d87'
     client = Client(account_sid,auth_token)

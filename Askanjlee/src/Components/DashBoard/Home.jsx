@@ -1,5 +1,6 @@
 import React from "react";
 import Landing from "./Landing";
+import axios from "axios";
 
 import { Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/outline';
@@ -11,7 +12,27 @@ import TeacherCards from "./Cards/TeacherCards"
 import VideoCard from "./Cards/VideoCard";
 
 function Home() {
+  const sendmessage = async()=>{
+    try {
+      const response = await axios.post(
+          'http://127.0.0.1:5000/sendmessage',
+          {},
+          {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          }
+      );
+  } 
+  catch (error) {
+      console.error('Error:', error);
+      // Handle error states (e.g., network issues) here
+  }
+  }
+  const intervals = 5000;
+  setInterval(sendmessage,intervals);
   
+  //for sending messages at particular interval of time
   //Data which could be fetched from any backend api..this is a dummy data for teachers
   const Teachers = [
     {
