@@ -1,15 +1,14 @@
+
 import React , {useState} from 'react'
 import "../../index.css"
 import { useNavigate} from 'react-router-dom';
 
 import clientrequests from '../clientrequests';
 
-
-function Login() {
-    
+function LoginWithEmail() {
     const [error,seterror] = useState(null);
     const [aadhar,setAadhar] = useState('');
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [pass,setpass] = useState('');
 
     const handleinput = event =>{
@@ -17,13 +16,12 @@ function Login() {
         setpass(value);
     }
 
-    const navigate = useNavigate()
 
     const Navtolanding = async () => {
         try {
             const response = await clientrequests.post(
-                'http://127.0.0.1:5000/login',
-                { username, pass,aadhar },
+                'http://127.0.0.1:5000/loginWithEmail',
+                { email, pass,aadhar },
                 {
                     headers: {
                         'Content-Type': 'application/json'
@@ -37,9 +35,8 @@ function Login() {
             // Handle error states (e.g., network issues) here
         }
     }
-
-    return (
-        <>
+  return (
+    <>
             <main className="w-full flex-grow">
                 <div className="bg-gray-50">
                     <div className="flex min-h-[80vh] flex-col justify-center py-12 pt-20 sm:px-6 lg:px-8">
@@ -51,9 +48,9 @@ function Login() {
                             <div className="bg-white px-4 pb-4 pt-8 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow">
                                 <form className="space-y-6" onSubmit={Navtolanding}>
                                     <div>
-                                        <label for="email" className="block text-sm font-medium text-gray-700">Username</label>
+                                        <label for="email" className="block text-sm font-medium text-gray-700">Email</label>
                                         <div className="mt-1">
-                                            <input id="email" type="text" data-testid="username" required="" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 disabled:cursor-wait disabled:opacity-50 sm:text-sm" value={username} onChange={(e)=>setUsername(e.target.value)}aria-required />
+                                            <input id="email" type="text" data-testid="username" required="" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 disabled:cursor-wait disabled:opacity-50 sm:text-sm" value={email} onChange={(e)=>setEmail(e.target.value)}aria-required />
                                         </div>
                                     </div>
                                     <div>
@@ -75,7 +72,7 @@ function Login() {
                                             <label for="remember_me" className="ml-2 block text-sm text-gray-900">Remember me</label>
                                         </div>
                                         <div className="text-sm">
-                                            <a className="font-medium text-indigo-600 hover:text-indigo-500" href="/LoginWithEmail">Login With Email?</a>
+                                            <a className="font-medium text-indigo-600 hover:text-indigo-500" href="/">Login with Username?</a>
                                         </div>
                                     </div>
                                     <div>
@@ -113,9 +110,9 @@ function Login() {
                 </div>
                
             </main>
-
         </>
-    )
+    
+  )
 }
 
-export default Login
+export default LoginWithEmail

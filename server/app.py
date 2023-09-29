@@ -64,13 +64,50 @@ def register_user():
         "password": new_user.password,
         "number":new_user.number
     })
+def Aadharverify(aadhar_number):
+    d = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+    [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+    [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+    [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+    [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+    [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+    [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+    [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    ]
+
+    p = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+    [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+    [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+    [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+    [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+    [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
+    ]
+    c = 0
+    inverted_list = list(map(int, reversed(str(aadhar_number))))
+
+    for i, val in enumerate(inverted_list):
+        c = d[c][p[i % 8][val]]
+
+    return c == 0
+
 
 @app.route("/login", methods=["POST"])
 def login_user():
     username = request.json["username"]
     password = request.json["pass"]
+    aadhar = request.json["aadhar"]
+    result = Aadharverify(aadhar)
+    if result is False:
+        return jsonify({"error":"Unidentified Aadhar Number"}),401
+  
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(username=username,password=password).first()
 
     if user is None:
         return jsonify({"error": "Unauthorized"}), 401
@@ -84,7 +121,34 @@ def login_user():
         "id": user.id,
         "username": user.username,
     })
+@app.route("/loginWithEmail", methods=["POST"])
+def login_user_email():
+    email = request.json["email"]
+    password = request.json["pass"]
+    aadhar = request.json["aadhar"]
+    result = Aadharverify(aadhar)
+    if result is False:
+        return jsonify({"error":"Unidentified Aadhar Number"}),401
 
+    # user = User.query.filter_by(password=password).first()
+
+    # if user is None:
+    #     return jsonify({"error": "Unauthorized"}), 401
+
+    user = User.query.filter_by(email=email,password=password).first()
+
+    if user is None:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # if not bcrypt.check_password_hash(user.password, password):
+    #     return jsonify({"error": "Unauthorized"}), 401
+    
+    session["user_id"] = user.id
+
+    return jsonify({
+        "id": user.id,
+        "username": user.username,
+    })
 @app.route("/logout", methods=["POST"])
 def logout_user():
     session.pop("user_id")

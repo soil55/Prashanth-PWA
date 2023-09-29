@@ -12,6 +12,8 @@ import CourseDetails from './Components/DashBoard/CourseDetails';
 import Leaderboard from './Components/DashBoard/Leaderboard';
 import Analytics from './Components/DashBoard/Analytics';
 import RegisterwithNumber from './Components/Registration/RegisterwithNumber';
+import Land from './Components/DashBoard/Land';
+import LoginWithEmail from './Components/Registration/LoginWithEmail';
 
 
 function App() {
@@ -19,8 +21,9 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
+        <Route exact path="/LoginWithEmail" element={<LoginWithEmail/>}/>
         <Route exact path="/Registration" element={<Registration/>}/>
-        <Route exact path="/Home" element={<Home/>}/>
+        <Route exact path="/Home" element={<Land/>}/>
         <Route exact path="/courses" element={<Courses/>}/>
         <Route exact path="/Mycourses" element={<Mycourses/>}/>
         <Route exact path="/Paths" element={<Paths/>}/>
